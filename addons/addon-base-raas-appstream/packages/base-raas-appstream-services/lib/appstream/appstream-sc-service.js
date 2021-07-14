@@ -77,6 +77,7 @@ class AppStreamScService extends Service {
     if (!stackName) {
       throw this.boom.badRequest(
         `Expected stack ${stackName} to be associated with the account ${accountId} but found`,
+        true,
       );
     }
 
@@ -89,7 +90,10 @@ class AppStreamScService extends Service {
     const { Names: fleetNames } = await appStream.listAssociatedFleets({ StackName: stackName }).promise();
 
     if (!_.includes(fleetNames, fleetName)) {
-      throw this.boom.badRequest(`Expected fleet ${fleetName} to be associated with the AppStream stack but found`);
+      throw this.boom.badRequest(
+        `Expected fleet ${fleetName} to be associated with the AppStream stack but found`,
+        true,
+      );
     }
 
     return { stackName, fleetName };
