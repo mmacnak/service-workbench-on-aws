@@ -5,6 +5,7 @@ import { observer, inject } from 'mobx-react';
 import { withRouter } from 'react-router-dom';
 import { Segment, Icon, Header, Table, List } from 'semantic-ui-react';
 
+import { isAppStreamEnabled } from '../../../helpers/settings';
 import ScEnvironmentRdpConnectionRow from './ScEnvironmentRdpConnectionRow';
 
 // expected props
@@ -20,10 +21,6 @@ class ScEnvironmentRdpConnections extends React.Component {
     const connections = this.environment.getConnections(item => item.scheme === 'rdp');
 
     return connections;
-  }
-
-  get isAppStreamEnabled() {
-    return process.env.REACT_APP_IS_APP_STREAM_ENABLED === 'true';
   }
 
   render() {
@@ -46,7 +43,7 @@ class ScEnvironmentRdpConnections extends React.Component {
 
   renderAppstreamInstructions(item) {
     return (
-      this.isAppStreamEnabled && (
+      isAppStreamEnabled && (
         <Segment key={`${item.id}__4`} className="clearfix" data-testid="appstream-instructions-rdp">
           <b>Connection instructions for your AppStream workspace:</b>
           <List bulleted>

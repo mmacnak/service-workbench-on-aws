@@ -7,6 +7,7 @@ import { Table, List, Segment, Label, Grid, Button } from 'semantic-ui-react';
 
 import { displayError } from '@aws-ee/base-ui/dist/helpers/notification';
 
+import { isAppStreamEnabled } from '../../../helpers/settings';
 import CopyToClipboard from '../../helpers/CopyToClipboard';
 
 const openWindow = (url, windowFeatures) => {
@@ -31,17 +32,13 @@ class ScEnvSshConnRowExpanded extends React.Component {
     });
   }
 
-  get isAppStreamEnabled() {
-    return process.env.REACT_APP_IS_APP_STREAM_ENABLED === 'true';
-  }
-
   get networkInterfaces() {
     const entries = this.props.networkInterfaces;
     if (_.isEmpty(entries)) return [];
 
     const result = [];
     _.forEach(entries, item => {
-      if (item.publicDnsName && !this.isAppStreamEnabled)
+      if (item.publicDnsName && !isAppStreamEnabled)
         result.push({ value: item.publicDnsName, type: 'dns', scope: 'public', info: 'Public' });
       if (item.privateIp) result.push({ value: item.privateIp, type: 'ip', scope: 'private', info: 'Private' });
     });
@@ -141,7 +138,7 @@ class ScEnvSshConnRowExpanded extends React.Component {
         <Table.Cell colSpan="3" className="p3">
           <Grid columns={2} stackable>
             <Grid.Row stretched>
-              {this.isAppStreamEnabled ? (
+              {isAppStreamEnabled ? (
                 <Grid.Column width={12}>{this.renderAppStreamInfo()}</Grid.Column>
               ) : (
                 <Grid.Column width={12}>{this.renderInfo()}</Grid.Column>
@@ -153,7 +150,7 @@ class ScEnvSshConnRowExpanded extends React.Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
-          {!this.isAppStreamEnabled && (
+          {!isAppStreamEnabled && (
             <div className="mt3">
               Example:
               <Segment className="mt2">

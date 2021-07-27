@@ -11,6 +11,7 @@ import ErrorBox from '@aws-ee/base-ui/dist/parts/helpers/ErrorBox';
 import ProgressPlaceHolder from '@aws-ee/base-ui/dist/parts/helpers/BasicProgressPlaceholder';
 import KeyPairCreateForm from '@aws-ee/key-pair-mgmt-ui/dist/parts/key-pairs/parts/KeyPairCreateForm';
 
+import { isAppStreamEnabled } from '../../../helpers/settings';
 import ScEnvironmentSshConnectionRow from './ScEnvironmentSshConnectionRow';
 
 // expected props
@@ -30,10 +31,6 @@ class ScEnvironmentSshConnections extends React.Component {
     if (!isStoreReady(store)) {
       swallowError(store.load());
     }
-  }
-
-  get isAppStreamEnabled() {
-    return process.env.REACT_APP_IS_APP_STREAM_ENABLED === 'true';
   }
 
   get environment() {
@@ -144,7 +141,7 @@ class ScEnvironmentSshConnections extends React.Component {
 
     return (
       <div className="mt2 mb2 fadeIn animated">
-        {this.isAppStreamEnabled && this.renderAppStreamInfo()}
+        {isAppStreamEnabled && this.renderAppStreamInfo()}
         {empty && (
           <Message warning>
             <Message.Header>Attention!</Message.Header>

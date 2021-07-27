@@ -7,6 +7,7 @@ import { Segment, Icon, Button, Header, Table, List } from 'semantic-ui-react';
 
 import { displayError } from '@aws-ee/base-ui/dist/helpers/notification';
 
+import { isAppStreamEnabled } from '../../../helpers/settings';
 import CopyToClipboard from '../../helpers/CopyToClipboard';
 
 const openWindow = (url, windowFeatures) => {
@@ -28,10 +29,6 @@ class ScEnvironmentHttpConnections extends React.Component {
       this.streamingUrl = undefined;
       this.timeout = 10;
     });
-  }
-
-  get isAppStreamEnabled() {
-    return process.env.REACT_APP_IS_APP_STREAM_ENABLED === 'true';
   }
 
   get environment() {
@@ -204,7 +201,7 @@ class ScEnvironmentHttpConnections extends React.Component {
   }
 
   renderBody(connections) {
-    if (this.isAppStreamEnabled) {
+    if (isAppStreamEnabled) {
       return this.renderAppStreamBody(connections);
     }
 
@@ -239,7 +236,7 @@ class ScEnvironmentHttpConnections extends React.Component {
 
   renderAppstreamInstructions(item) {
     return (
-      this.isAppStreamEnabled && (
+      isAppStreamEnabled && (
         <Segment key={`${item.id}__4`} className="clearfix" data-testid="appstream-instructions-http">
           <b>Connection instructions for your AppStream workspace:</b>
           <List bulleted>

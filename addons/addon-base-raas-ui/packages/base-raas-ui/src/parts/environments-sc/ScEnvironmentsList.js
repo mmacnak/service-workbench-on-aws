@@ -18,6 +18,7 @@ import {
 import ErrorBox from '@aws-ee/base-ui/dist/parts/helpers/ErrorBox';
 import ProgressPlaceHolder from '@aws-ee/base-ui/dist/parts/helpers/BasicProgressPlaceholder';
 
+import { isAppStreamEnabled } from '../../helpers/settings';
 import { filterNames } from '../../models/environments-sc/ScEnvironmentsStore';
 import ScEnvironmentCard from './ScEnvironmentCard';
 import ScEnvironmentsFilterButtons from './parts/ScEnvironmentsFilterButtons';
@@ -53,10 +54,6 @@ class ScEnvironmentsList extends React.Component {
   componentWillUnmount() {
     const store = this.envsStore;
     store.stopHeartbeat();
-  }
-
-  get isAppStreamEnabled() {
-    return process.env.REACT_APP_IS_APP_STREAM_ENABLED === 'true';
   }
 
   get envTypesStore() {
@@ -102,7 +99,7 @@ class ScEnvironmentsList extends React.Component {
     );
 
     runInAction(() => {
-      if (this.isAppStreamEnabled && _.isEmpty(appStreamProjectIds)) this.provisionDisabled = true;
+      if (isAppStreamEnabled && _.isEmpty(appStreamProjectIds)) this.provisionDisabled = true;
     });
 
     if (isStoreError(store)) {
@@ -147,7 +144,7 @@ class ScEnvironmentsList extends React.Component {
     const store = this.envsStore;
     const selectedFilter = this.selectedFilter;
     let list = store.filtered(selectedFilter);
-    list = this.isAppStreamEnabled ? _.filter(list, env => _.includes(appStreamProjectIds, env.projectId)) : list;
+    list = isAppStreamEnabled ? _.filter(list, env => _.includes(appStreamProjectIds, env.projectId)) : list;
     const isEmpty = _.isEmpty(list);
 
     return (

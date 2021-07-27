@@ -9,6 +9,7 @@ import Form from '@aws-ee/base-ui/dist/parts/helpers/fields/Form';
 import Input from '@aws-ee/base-ui/dist/parts/helpers/fields/Input';
 import TextArea from '@aws-ee/base-ui/dist/parts/helpers/fields/TextArea';
 
+import { isAppStreamEnabled } from '../../../helpers/settings';
 import { getCreateInternalEnvForm } from '../../../models/forms/CreateInternalEnvForm';
 import SelectConfigurationCards from './SelectConfigurationCards';
 
@@ -38,7 +39,7 @@ class CreateInternalEnvForm extends React.Component {
   // For example: Projects not fully configured with AppStream need to be filtered out
   getProjectIdOptions() {
     const store = this.userStore;
-    if (!this.isAppStreamEnabled) return store.projectIdDropdown;
+    if (!isAppStreamEnabled) return store.projectIdDropdown;
 
     const projects = this.getProjects();
     const filteredProjects = _.filter(projects, proj => proj.isAppStreamConfigured);
@@ -48,10 +49,6 @@ class CreateInternalEnvForm extends React.Component {
     const retVal = _.filter(store.projectIdDropdown, proj => _.includes(filteredProjectIds, proj.key));
 
     return retVal;
-  }
-
-  get isAppStreamEnabled() {
-    return process.env.REACT_APP_IS_APP_STREAM_ENABLED === 'true';
   }
 
   get envTypeId() {
@@ -154,7 +151,7 @@ class CreateInternalEnvForm extends React.Component {
     // we show the AppStream configuration warning when the feature is enabled,
     // and the user's projects are not linked to AppStream-configured accounts
     const projects = this.getProjectIdOptions();
-    if (this.isAppStreamEnabled && _.isEmpty(projects)) {
+    if (isAppStreamEnabled && _.isEmpty(projects)) {
       return this.renderMissingAppStreamConfig();
     }
 

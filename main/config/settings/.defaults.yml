@@ -203,5 +203,5 @@ egressNotificationSnsTopicArn: arn:aws:sns:${self:custom.settings.awsRegion}:${s
 egressNotificationTopicName: ${self:custom.settings.namespace}-EgressTopic
 # =========================================================================================================
 
-# Determine whether workspace should be accessible only through AppStream
+# Determines whether workspace should be accessible only through AppStream
 isAppStreamEnabled: false

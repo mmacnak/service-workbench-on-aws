@@ -7,6 +7,7 @@ import { Button, Table, List, Label } from 'semantic-ui-react';
 
 import { displayError } from '@aws-ee/base-ui/dist/helpers/notification';
 
+import { isAppStreamEnabled } from '../../../helpers/settings';
 import CopyToClipboard from '../../helpers/CopyToClipboard';
 
 const openWindow = (url, windowFeatures) => {
@@ -30,10 +31,6 @@ class ScEnvironmentRdpConnectionRow extends React.Component {
       this.showPassword = false;
       this.processingId = undefined;
     });
-  }
-
-  get isAppStreamEnabled() {
-    return process.env.REACT_APP_IS_APP_STREAM_ENABLED === 'true';
   }
 
   get environment() {
@@ -175,7 +172,7 @@ class ScEnvironmentRdpConnectionRow extends React.Component {
               defined below.
             </b>
             <List bulleted>
-              {!this.isAppStreamEnabled && (
+              {!isAppStreamEnabled && (
                 <List.Item>
                   The IP Address or DNS of the instance.{' '}
                   {moreThanOne ? 'Ask your administrator if you are not sure which one to use:' : ''}
@@ -222,7 +219,7 @@ class ScEnvironmentRdpConnectionRow extends React.Component {
           </Table.Cell>
         </Table.Row>
 
-        {this.isAppStreamEnabled && windowsRdpInfo && (
+        {isAppStreamEnabled && windowsRdpInfo && (
           <Table.Row>
             <Table.Cell>
               <Button
