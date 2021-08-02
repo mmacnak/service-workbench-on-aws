@@ -47,19 +47,32 @@ const productsToCreate = [
   {
     filename: 'sagemaker-notebook-instance',
     displayName: 'SageMaker Notebook',
-    description: `An Amazon SageMaker Jupyter Notebook that comes with: \n* TensorFlow \n* Apache MXNet \n* Scikit-learn
-  `,
+    description: `An Amazon SageMaker Jupyter Notebook that comes with: \n* TensorFlow \n* Apache MXNet \n* Scikit-learn`,
   },
   {
     filename: 'emr-cluster',
     displayName: 'EMR',
-    description: `An Amazon EMR research workspace that comes with: \n* Hail 0.2 \n* Jupyter Lab \n* Spark 2.4.4 \n* Hadoop 2.8.5
-`,
+    description: `An Amazon EMR research workspace that comes with: \n* Hail 0.2 \n* Jupyter Lab \n* Spark 2.4.4 \n* Hadoop 2.8.5`,
   },
   {
     filename: 'ec2-windows-instance',
     displayName: 'EC2 Windows',
     description: `* An EC2 Windows instance with RDP access \n* Secure compute in the cloud`,
+  },
+  {
+    filename: 'ec2-rstudio-windows-instance',
+    displayName: 'Rstudio 1.4 with R4.1 on EC2 Windows',
+    description: `* Rstudio running on an EC2 Windows instance with RDP access \n* Secure compute in the cloud`,
+  },
+  {
+    filename: 'ec2-matlab-windows-instance',
+    displayName: 'Matlab R2021a on EC2 Windows',
+    description: `* Matlab R2021a running on an EC2 Windows instance with RDP access \n* Secure compute in the cloud`,
+  },
+  {
+    filename: 'ec2-stata-windows-instance',
+    displayName: 'Stata17 on EC2 Windows',
+    description: `* Stata17 running on an EC2 Windows instance with RDP access \n* Secure compute in the cloud`,
   },
 ];
 
