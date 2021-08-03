@@ -323,13 +323,12 @@ Resources:
           Set-Content -Path c:\workdir\start-s3-synchronizer.ps1 -Value $startS3SyncScriptContent
 
           # Source the script to start the s3 synchronizer process
-          ."c:\workdir\start-s3-synchronizer.ps1"
-
+          ."C:\workdir\start-s3-synchronizer.ps1"
 
           #install R & Rstudio IDE
           #install chrome browswer
           [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
-          md -Path 'C:\DataTK\99_REnv\01_Source\'
+          md -Path "C:\DataTK\99_REnv\01_Source\"
           $dir = "C:\DataTK\99_REnv\01_Source\"
           Set-Location $dir
 
