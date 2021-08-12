@@ -339,8 +339,8 @@ Resources:
           ####################################
 
           [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
-          $urlMatlab = "https://statainstallami23049.s3.us-east-1.amazonaws.com/MatlabR2021a.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZYVPTDE52KNKQZBZ%2F20210802%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210802T201633Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=f8d8a67a2ee7ec798535eae41654925660e590772a798ab2279d260f5114c7a4"
-          $urlInstallInput = "https://statainstallami23049.s3.us-east-1.amazonaws.com/my_installer_input.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZYVPTDE52KNKQZBZ%2F20210802%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210802T211141Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=b55b5c21d41bb4ac1781f414c304d682259c3957bef05e81da05c18363dea3bf"
+          $urlMatlab = "https://statainstallami23049.s3.us-east-1.amazonaws.com/MatlabR2021a.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZYVPTDE52KNKQZBZ%2F20210810%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210810T192345Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=109bb789e9772fb933ba06c88235f9eed74e988174c9d0fb3367bdd111ce4e8a"
+          $urlInstallInput = "https://statainstallami23049.s3.us-east-1.amazonaws.com/my_installer_input.txt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZYVPTDE52KNKQZBZ%2F20210810%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210810T192427Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=96aa46f579d308a1a1341039ac01085789d145f234c997454126293a7ead7ff3"
           $dir = "C:\Users\Administrator\"
           $outputMatlab = "$dir\matlabR2021a.zip"
           $outputInstallInput = "$dir\my_installer_input.txt"
