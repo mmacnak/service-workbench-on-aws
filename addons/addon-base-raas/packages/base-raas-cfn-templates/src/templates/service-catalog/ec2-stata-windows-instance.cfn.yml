@@ -329,7 +329,7 @@ Resources:
           #Install Chrome Browser
 
           [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
-          $urlStata = "https://installfiles456345.s3.us-east-1.amazonaws.com/SetupStata17.exe?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZYVPTDE52KNKQZBZ%2F20210731%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210731T212038Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=2421685019c6f0cfe6349cfa87801396427acb7e710543ca58a4a5d348c596c3"
+          $urlStata = "https://installfiles456345.s3.us-east-1.amazonaws.com/SetupStata17.exe?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAZYVPTDE52KNKQZBZ%2F20210816%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210816T140929Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=1facd8fe7486df5193d658412f4bea03df3d58cf46eb527c7ef96a9d6463e00e"
           $dir = "C:\Users\Administrator\"
           $outputStata = "$dir\SetupStata17.exe"
           $wcRStudio = New-Object System.Net.WebClient
